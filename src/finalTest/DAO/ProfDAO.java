@@ -5,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import finalTest.vo.MemberVO;
+import finalTest.vo.SubjectVO;
 
 public class ProfDAO {
 	private static ProfDAO dao = new ProfDAO();
@@ -78,7 +82,10 @@ public class ProfDAO {
 		} catch (SQLException e) {
 			System.out.println("login error" + e);
 		} finally {
-			close(rs, pstmt, con);
+			if(rs != null) {
+				close(rs, pstmt, con);
+			}
+			else close(pstmt, con);
 		}
 		
 		return result;
@@ -101,5 +108,65 @@ public class ProfDAO {
 		} finally {
 			close(pstmt, con);
 		}
+	}
+	public ArrayList<SubjectVO> showSubject(String prof) {
+		ArrayList<SubjectVO> List = new ArrayList<SubjectVO>();
+		Connection con = connect();
+		String sql = "select * from subject where prof=?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		SubjectVO subject = null;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, prof);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				subject = new SubjectVO();
+				subject.setId(rs.getString("id"));
+				subject.setName(rs.getString("name"));
+				subject.setCount(rs.getInt("count"));
+				List.add(subject);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("showSubject error" + e);
+		} finally {
+			if(rs != null) {
+				close(rs, pstmt, con);
+			}
+			else close(pstmt, con);
+		}
+		return List;
+	}
+	
+	public ArrayList<MemberVO> showSubStu(String sId) {
+		ArrayList<MemberVO> List = new ArrayList<MemberVO>();
+		Connection con = connect();
+		String sql = "select b.id as id, b.name as name from enroll a, subject b where a.subject = ?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberVO member  = null;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, sId);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				member = new MemberVO();
+				member.setId(rs.getString("id"));
+				member.setName(rs.getString("name"));
+				List.add(member);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("showSubStu error" + e);
+		} finally {
+			if(rs != null) {
+				close(rs, pstmt, con);
+			}
+			else close(pstmt, con);
+		}
+		return List;
 	}
 }

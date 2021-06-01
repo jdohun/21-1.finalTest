@@ -15,6 +15,8 @@ public class ProfController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		List = new HashMap<String, Controller>();
 		List.put("/enroll.prof", new ProfEnrollController());
+		List.put("/ProfShowSubject.prof", new ProfShowSubjectController());
+		List.put("/ProfShowSubStu.prof", new ProfShowSubStuController());
 	}
 	
 	@Override

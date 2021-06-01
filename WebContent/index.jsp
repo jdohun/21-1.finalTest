@@ -16,21 +16,13 @@
 	%>
 	<h3>YongIn LMS</h3>
 	
-	<h4>교수 로그인</h4><br>
-	<form action="login.do?select=prof" method="post">
+	<form action="login.do" method="post">
 		ID: <input type="text" name="id"><br>
 		Password : <input type="text" name="pwd"><br>
+		<input type="radio" id="Professor" name="loginType" value="prof" checked="checked">Professor
+		<input type="radio" id="Student" name="loginType" value="stu">Student
 		<br><input type="submit" value="LOGIN">
 	</form><br>
 	
-	<h4>학생 로그인</h4><br>
-	<form action="login.do?select=stu" method="post">
-		ID: <input type="text" name="id"><br>
-		Password : <input type="text" name="pwd"><br>
-		<br><input type="submit" value="LOGIN">
-	</form>
-	
-	<!-- <input type="radio" id="Professor" name="select" checked="checked" onchange="javascript: form.action='login.do?select=prof';">Professor
-		<input type="radio" id="Student" name="select" onchange="javascript: form.action='login.do?select=stu';">Student -->
 </body>
 </html>

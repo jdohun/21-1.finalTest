@@ -9,7 +9,7 @@
 <body>
 	<%
 		session.invalidate();
+		response.sendRedirect("index.jsp");
 	%>
-	<meta http-equiv="refresh" content="0;url=index.jsp">
 </body>
 </html>

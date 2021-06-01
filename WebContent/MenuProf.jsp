@@ -9,7 +9,7 @@
 <body>
 	<h3>교수 메뉴</h3><br>
 	<a href="ProfEnrollSubject.jsp">강의 등록</a><br>
-	<a href="ProfShowSubject.jsp">등록된 강의 리스트</a><br>
+	<a href="ProfShowSubject.prof">등록된 강의 리스트</a><br>
 	<br><a href="LogOut.jsp">LogOut</a>
 </body>
 </html>
