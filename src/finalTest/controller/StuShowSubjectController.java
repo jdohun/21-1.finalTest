@@ -8,19 +8,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import finalTest.service.ProfService;
-import finalTest.vo.MemberVO;
+import finalTest.service.StudentService;
+import finalTest.vo.SubjectVO;
 
-public class ProfShowSubStuController implements Controller {
+public class StuShowSubjectController implements Controller {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String sub = (String)req.getParameter("sub");
-		req.setAttribute("sub", sub);
-		String sId = (String)req.getParameter("sId");
-		ArrayList<MemberVO> List = 	ProfService.getInstance().showSubStu(sId);
+		HttpSession session = req.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		ArrayList<SubjectVO> List = null; 
+		List = StudentService.getInstance().stuShowSubject(id);
 		req.setAttribute("List", List);
 		
-		String path = "ProfSubStuList.jsp";
+		String path = "StuShowSubject.jsp";
 		HttpUtil.forward(req, resp, path);
 	}
 }

@@ -143,7 +143,7 @@ public class ProfDAO {
 	public ArrayList<MemberVO> showSubStu(String sId) {
 		ArrayList<MemberVO> List = new ArrayList<MemberVO>();
 		Connection con = connect();
-		String sql = "select b.id as id, b.name as name from enroll a, subject b where a.subject = ?";
+		String sql = "select student.id, student.name from student, enroll where enroll.subject = ? and enroll.student = student.id";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		MemberVO member  = null;

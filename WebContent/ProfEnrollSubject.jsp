@@ -15,5 +15,6 @@
 		#of Student: <input type="text" name="sMax"><br>
 		<br><input type="submit" value="Enroll">
 	</form>
+	<br><a href="index.jsp">Menu</a>
 </body>
 </html>

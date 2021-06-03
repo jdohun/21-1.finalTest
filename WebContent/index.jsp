@@ -7,8 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<% String result = (String)request.getAttribute("result"); %>
-	<% if(result != null){
+	<% 
+		String loginType = (String)request.getSession().getAttribute("loginType");
+		if(loginType != null){
+			if(loginType.equals("prof")){
+				response.sendRedirect("MenuProf.jsp");
+			}
+			else if(loginType.equals("stu")){
+				response.sendRedirect("MenuStudent.jsp");
+			}
+		}
+		
+		String result = (String)request.getAttribute("result");
+		if(result != null){
 	%>
 		<p><%=result %></p>
 	<%

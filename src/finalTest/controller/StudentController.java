@@ -14,7 +14,10 @@ public class StudentController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		List = new HashMap<String, Controller>();
-		List.put("/enroll.stu", new StuEnrollController());
+		List.put("/searchSub.stu", new StuSearchSubController());
+		List.put("/StuEnroll.stu", new StuEnrollController());
+		List.put("/StuShowSubject.stu", new StuShowSubjectController());
+		List.put("/StuSubDelete.stu", new StuSubDeleteController());
 	}
 	
 	@Override

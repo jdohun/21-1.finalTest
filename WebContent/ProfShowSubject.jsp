@@ -9,11 +9,6 @@
 <title>Insert title here</title>
 <%
  	ArrayList<SubjectVO> List = (ArrayList<SubjectVO>)request.getAttribute("List");
-	if(List == null){
-%>
-	<p>아무것도 없네?</p>
-<%
-	}
 %>
 </head>
 <body>
@@ -31,16 +26,22 @@
 		%>
 		<tr>
 			<td>
-				<a href="ProfShowSubStu.prof?sub=<%=subject.getName()%>" name="profSubId" value=<%=subject.getId()%>><%=subject.getId() %></a>
+				<a href="ProfShowSubStu.prof?sub=<%=subject.getName()%>&sId=<%=subject.getId()%>"><%=subject.getId()%></a>
 			</td>
 			<td><%=subject.getName() %></td>
 			<td><%=subject.getCount() %></td>
 			<td></td>
 		</tr>
 		<%					
+				}
 			}
-		} %>
+			else{
+		%>
+			<tr><td colspan="4">등록한 강의가 없습니다</td></tr>
+		<%
+			}
+		%>
 	</table>
-	<br><a href="MenuProf.jsp">Menu</a>
+	<br><a href="index.jsp">Menu</a>
 </body>
 </html>

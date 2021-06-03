@@ -5,19 +5,19 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import finalTest.service.StudentService;
+import finalTest.vo.SubjectVO;
 
-public class StuEnrollController implements Controller {
+public class StuSearchSubController implements Controller {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String sId = (String)req.getParameter("sId");
-		HttpSession session = req.getSession();
-		String id = (String)session.getAttribute("id");
+		String subId = (String)req.getParameter("sId");
 		
-		StudentService.getInstance().stuEnroll(sId, id);
-		String path = "StuEnrollSubject.jsp";
+		SubjectVO subject = StudentService.getInstance().searchSub(subId);
+		req.setAttribute("subject", subject);
+		
+		String path = "/StuEnrollSubject.jsp";
 		HttpUtil.forward(req, resp, path);
 	}
 }

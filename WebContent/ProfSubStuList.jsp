@@ -32,6 +32,6 @@
 			}
 		} %>
 	</table>
-	<br><a href="MenuProf.jsp">Menu</a>
+	<br><a href="index.jsp">Menu</a>
 </body>
 </html>

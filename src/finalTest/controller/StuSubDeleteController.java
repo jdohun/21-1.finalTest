@@ -9,15 +9,15 @@ import javax.servlet.http.HttpSession;
 
 import finalTest.service.StudentService;
 
-public class StuEnrollController implements Controller {
+public class StuSubDeleteController implements Controller {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String sId = (String)req.getParameter("sId");
 		HttpSession session = req.getSession();
 		String id = (String)session.getAttribute("id");
+		String sId = req.getParameter("sId");
+		StudentService.getInstance().StuSubDelete(id, sId);
 		
-		StudentService.getInstance().stuEnroll(sId, id);
-		String path = "StuEnrollSubject.jsp";
+		String path = "StuShowSubject.stu";
 		HttpUtil.forward(req, resp, path);
 	}
 }

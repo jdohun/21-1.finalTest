@@ -26,7 +26,7 @@ public class LoginController implements Controller {
 			result = service.login(id, pwd);
 			if(result) {
 				HttpSession session = req.getSession();
-				session.setAttribute("select", loginType);
+				session.setAttribute("loginType", loginType);
 				session.setAttribute("id", id);
 				path = "MenuProf.jsp";
 			}
@@ -40,7 +40,7 @@ public class LoginController implements Controller {
 			result = service.login(id, pwd);
 			if(result) {
 				HttpSession session = req.getSession();
-				session.setAttribute("select", loginType);
+				session.setAttribute("loginType", loginType);
 				session.setAttribute("id", id);
 				path = "MenuStudent.jsp";
 			}
