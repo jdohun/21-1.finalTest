@@ -155,20 +155,17 @@ public class StudentDAO {
 		} finally {
 			close(rs, pstmt, con);
 		}
-		
 		return List;
 	}
 	public void StuSubDelete(String id, String sId) {
 		Connection con = connect();
 		String sql = "delete from enroll where subject=? and student=?";
 		PreparedStatement pstmt = null;
-		int deleteResult;
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, sId);
 			pstmt.setString(2, id);
-			deleteResult = pstmt.executeUpdate();
-			System.out.println(deleteResult);
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("StuSubDelete error" + e);
 		} finally {

@@ -5,6 +5,7 @@ public class SubjectVO {
 	private String name;
 	private int count;
 	private String prof;
+	private int enrolled;
 	
 	public String getId() {
 		return id;
@@ -29,5 +30,11 @@ public class SubjectVO {
 	}
 	public void setProf(String prof) {
 		this.prof = prof;
+	}
+	public int getEnrolled() {
+		return enrolled;
+	}
+	public void setEnrolled(int enrolled) {
+		this.enrolled = enrolled;
 	}
 }
