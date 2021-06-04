@@ -29,7 +29,7 @@
 	
 	<form action="login.do" method="post">
 		ID: <input type="text" name="id"><br>
-		Password : <input type="text" name="pwd"><br>
+		Password : <input type="password" name="pwd"><br>
 		<input type="radio" id="Professor" name="loginType" value="prof" checked="checked">Professor
 		<input type="radio" id="Student" name="loginType" value="stu">Student
 		<br><input type="submit" value="LOGIN">
