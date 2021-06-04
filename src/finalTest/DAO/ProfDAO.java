@@ -111,10 +111,15 @@ public class ProfDAO {
 	}
 	public ArrayList<SubjectVO> showSubject(String prof) {
 		ArrayList<SubjectVO> List = new ArrayList<SubjectVO>();
+		ArrayList<SubjectVO> List2 = new ArrayList<SubjectVO>();
 		Connection con = connect();
 		String sql = "select * from subject where prof=?";
+		String sql2 = "select subject, count(*) as enrolled from enroll group by subject";
+		
 		PreparedStatement pstmt = null;
+		
 		ResultSet rs = null;
+		
 		SubjectVO subject = null;
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -127,6 +132,26 @@ public class ProfDAO {
 				subject.setName(rs.getString("name"));
 				subject.setCount(rs.getInt("count"));
 				List.add(subject);
+			}
+			
+			pstmt = con.prepareStatement(sql2);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				subject = new SubjectVO();
+				subject.setId(rs.getString("subject"));
+				subject.setEnrolled(rs.getInt("enrolled"));
+				List2.add(subject);
+			}
+			
+			for(int i = 0; i< List.size(); ++i) {
+				for(int j = 0; j < List2.size(); ++j) {
+					String sId = List.get(i).getId();
+					if(sId.equals(List2.get(j).getId())) {
+						List.get(i).setEnrolled(List2.get(j).getEnrolled());
+						break;
+					}
+				}
 			}
 			
 		} catch (SQLException e) {

@@ -30,7 +30,7 @@
 			</td>
 			<td><%=subject.getName() %></td>
 			<td><%=subject.getCount() %></td>
-			<td></td>
+			<td><%=subject.getEnrolled() %></td>
 		</tr>
 		<%					
 				}
